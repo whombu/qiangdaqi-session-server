@@ -11,9 +11,9 @@ class parse_request
 
     public function __construct()
     {
-        require_once('return_code.php');
+        require_once('system/return_code.php');
         require_once('application/controllers/qcloud/minaauth/Auth.php');
-        require_once('log/log.php');
+        require_once('system/log/log.php');
     }
 
     /**
@@ -25,6 +25,8 @@ class parse_request
     {
         log_message("info",$request_json);
         if ($this->is_json($request_json)) {
+            //echo('1.1');
+	    //log_message("info",‘1.1’);
             $json_decode = json_decode($request_json, true);
             if (!isset($json_decode['interface']['interfaceName'])) {
                 $ret['returnCode'] = return_code::MA_NO_INTERFACE;
@@ -46,6 +48,8 @@ class parse_request
                             $iv = $json_decode['interface']['para']['iv'];
                             $ret = $auth->get_id_skey($code,$encrypt_data,$iv);
                         }
+			//log_message("info",‘1.2’);
+                        //echo('1.2');
                     } else {
                         $ret['returnCode'] = return_code::MA_PARA_ERR;
                         $ret['returnMessage'] = 'PARA_ERR';

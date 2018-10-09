@@ -5,6 +5,9 @@
  * Date: 2016/10/2
  * Time: 10:54
  */
+//echo get_include_path();
+//$request = file_get_contents("php://input");
+//echo($request);
 require_once('system/parse_request.php');
 require_once('system/log/log.php');
 $request = file_get_contents("php://input");

@@ -5,17 +5,20 @@
  * Date: 2016/10/13
  * Time: 14:24
  */
-
+//require_once('system/test.php');
 require_once('system/report_data/report_data.php');
 require_once('system/report_data/ready_for_report_data.php');
 require_once "system/load_config.php";
+//require_once('system/log/log.php')
+//log_message("INFO","123");
 $load_config = new load_config();
 $config = $load_config->fc_load_config("system/conf/config.ini");
 $region = $config['region'];//用户配置
 $secret_id = $config['secret_id'];//用户配置
 $secretKey = $config['secretKey'];//用户配置
 $ip = $config['ip'];//用户配置
-
+echo($ip);
+echo($secret_id);
 $ready_for_report_data = new ready_for_report_data();
 $report_data = new report_data();
 $contents = $ready_for_report_data->check_data();
@@ -46,3 +49,4 @@ if($contents){
 
     $ready_for_report_data->deletfile();
 }
+?>

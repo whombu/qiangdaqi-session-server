@@ -41,7 +41,7 @@ class ready_for_report_data {
      */
     public function read_report_data(){
         $data_path = $this->report_data_path."data";
-        if(!file_exists($data_path)){
+	if(!file_exists($data_path)){
             log_message("ERROR","report_data_not_exit");
             return false;
         }
